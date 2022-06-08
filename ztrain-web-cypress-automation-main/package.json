@@ -1,0 +1,46 @@
+{
+  "name": "ztrain-web-cypress-automation",
+  "version": "1.0.0",
+  "description": "Test automation for ZTrain Web App",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "report:allure": "allure generate target/allure-results --clean -o target/allure-report && allure open  target/allure-report",
+    "test:allure": "npm run test && npm run report:allure",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deharteloos/ztrain-web-cypress-automation.git"
+  },
+  "keywords": [
+    "cypress",
+    "cucumber",
+    "automation"
+  ],
+  "author": "Deharteloos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deharteloos/ztrain-web-cypress-automation/issues"
+  },
+  "homepage": "https://github.com/Deharteloos/ztrain-web-cypress-automation#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^9.1.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
+    "allure-commandline": "^2.17.2",
+    "cypress": "^9.6.1",
+    "mocha-allure-reporter": "^1.4.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "src/test/resources/features/[filepath]/**/*.{js,ts}",
+      "src/test/resources/features/[filepath].{js,ts}",
+      "src/test/support/step_definitions/**/*.{js,ts}"
+    ],
+    "json": {
+      "enabled": true,
+      "output": "target/cucumber-report.json"
+    }
+  }
+}
